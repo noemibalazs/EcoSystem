@@ -9,5 +9,4 @@ abstract class CustomPreLoader<Any>(val context: Context) : ListPreloader.Preloa
     override fun getPreloadRequestBuilder(item: Any): RequestBuilder<*>? {
         return GlideApp.with(context).load(item)
     }
-
 }
