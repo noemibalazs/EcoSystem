@@ -11,6 +11,7 @@ import com.bumptech.glide.load.engine.cache.MemorySizeCalculator
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.module.AppGlideModule
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.signature.ObjectKey
 
 @GlideModule
 class CustomGlideModule() : AppGlideModule() {
@@ -18,6 +19,7 @@ class CustomGlideModule() : AppGlideModule() {
     override fun applyOptions(context: Context, builder: GlideBuilder) {
 
         val requestOptions = RequestOptions()
+            .signature(ObjectKey(System.currentTimeMillis() / (24 * 60 * 60 * 1000)))
             .diskCacheStrategy(DiskCacheStrategy.NONE)
 
         val memoryCacheSizeBytes = (MemorySizeCalculator.Builder(context).build().memoryCacheSize* 1.2).toLong()
@@ -31,4 +33,5 @@ class CustomGlideModule() : AppGlideModule() {
             .setDefaultTransitionOptions(Drawable::class.java, transitionOptions)
             .setLogLevel(Log.ERROR)
     }
+
 }

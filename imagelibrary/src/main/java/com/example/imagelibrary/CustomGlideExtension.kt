@@ -2,6 +2,7 @@ package com.example.imagelibrary
 
 import com.bumptech.glide.annotation.GlideExtension
 import com.bumptech.glide.annotation.GlideOption
+import com.bumptech.glide.annotation.GlideType
 import com.bumptech.glide.request.BaseRequestOptions
 
 @GlideExtension
