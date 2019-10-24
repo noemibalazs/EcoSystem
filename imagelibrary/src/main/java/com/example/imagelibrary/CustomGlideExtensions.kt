@@ -22,6 +22,6 @@ object CustomGlideExtensions {
     @GlideOption
     @JvmStatic
     fun defaultImage(options: BaseRequestOptions<*>): BaseRequestOptions<*> {
-        return options.override(120, 170)
+        return options.override(1024, 768)
     }
 }

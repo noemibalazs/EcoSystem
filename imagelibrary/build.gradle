@@ -34,11 +34,7 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     kapt 'com.github.bumptech.glide:compiler:4.9.0'
-
-    implementation ("com.github.bumptech.glide:recyclerview-integration:4.9.0") {
-        // Excludes the support library because it's already included by Glide.
-        transitive = false
-    }
+    api 'com.github.bumptech.glide:glide:4.9.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

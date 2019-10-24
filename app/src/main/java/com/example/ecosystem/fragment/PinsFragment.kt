@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+
 
 import com.example.ecosystem.R
 import com.example.ecosystem.adapter.EndlessRecyclerOnScrollListener
@@ -56,4 +56,6 @@ class PinsFragment : Fragment() {
             pinRecycleView.adapter = adapter
         })
     }
+
+
 }

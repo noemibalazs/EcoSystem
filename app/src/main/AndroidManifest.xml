@@ -20,10 +20,6 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.example.imagelibrary.GlideModule"
-            android:value="GlideModule" />
-
     </application>
 
 </manifest>
