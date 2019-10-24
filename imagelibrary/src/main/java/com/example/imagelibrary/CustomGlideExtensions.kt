@@ -1,8 +1,14 @@
 package com.example.imagelibrary
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.bumptech.glide.annotation.GlideExtension
 import com.bumptech.glide.annotation.GlideOption
 import com.bumptech.glide.request.BaseRequestOptions
+import com.bumptech.glide.request.RequestListener
 
 @GlideExtension
 object CustomGlideExtensions {

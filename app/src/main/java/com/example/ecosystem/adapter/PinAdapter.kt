@@ -1,7 +1,6 @@
 package com.example.ecosystem.adapter
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,8 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecosystem.R
 import com.example.ecosystem.data.entity.Pin
-import com.example.imagelibrary.GlideApp
+import com.example.imagelibrary.GlideModule
+
 
 class PinAdapter(val pinList: MutableList<Pin>, val context: Context) : RecyclerView.Adapter<PinAdapter.PinVH>() {
 
@@ -24,7 +24,9 @@ class PinAdapter(val pinList: MutableList<Pin>, val context: Context) : Recycler
 
     override fun onBindViewHolder(holder: PinVH, position: Int) {
         val pin = pinList[position]
-        GlideApp.with(context).load(pin.urls.regular).into(holder.avatar)
+
+        GlideModule.displayImage(context, pin.urls.regular, holder.avatar)
+
     }
 
     inner class PinVH(view: View) : RecyclerView.ViewHolder(view) {
