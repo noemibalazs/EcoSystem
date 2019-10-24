@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#c62828</color>
     <color name="colorAccent">#d50000</color>
     <color name="navigationBarColor">#c62828</color>
+
+    <color name="gradient_start">#0000ff</color>
+    <color name="gradient_center">#800080</color>
+    <color name="gradient_end">#c62828</color>
 </resources>

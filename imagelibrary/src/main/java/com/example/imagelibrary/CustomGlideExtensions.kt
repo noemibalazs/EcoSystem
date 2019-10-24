@@ -2,11 +2,10 @@ package com.example.imagelibrary
 
 import com.bumptech.glide.annotation.GlideExtension
 import com.bumptech.glide.annotation.GlideOption
-import com.bumptech.glide.annotation.GlideType
 import com.bumptech.glide.request.BaseRequestOptions
 
 @GlideExtension
-object CustomGlideExtension {
+object CustomGlideExtensions {
 
     @GlideOption
     @JvmStatic
@@ -19,5 +18,4 @@ object CustomGlideExtension {
     fun defaultImage(options: BaseRequestOptions<*>): BaseRequestOptions<*> {
         return options.override(120, 170)
     }
-
 }
