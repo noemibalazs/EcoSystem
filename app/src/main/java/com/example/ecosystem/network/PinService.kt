@@ -1,7 +1,7 @@
 package com.example.ecosystem.network
 
 
-import com.example.ecosystem.data.entity.PinList
+import com.example.ecosystem.data.entity.Pin
 import com.example.ecosystem.utils.BASE_URL
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
@@ -14,7 +14,7 @@ import retrofit2.http.GET
 interface PinService {
 
     @GET("wgkJgazE")
-    fun getPinList(): Call<PinList>
+    fun getPinList(): Call<MutableList<Pin>>
 
     companion object{
 

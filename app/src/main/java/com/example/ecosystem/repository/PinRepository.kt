@@ -1,8 +1,10 @@
 package com.example.ecosystem.repository
 
 import android.util.Log
+import android.widget.MultiAutoCompleteTextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.ecosystem.data.entity.Pin
 import com.example.ecosystem.network.PinService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,20 +17,20 @@ import retrofit2.Response
 
 class PinRepository( val pinService:PinService) {
 
-    inline fun <reified PinList> fetchList(crossinline call: (PinService) -> Call<PinList>): LiveData<PinList>{
-        val result = MutableLiveData<PinList>()
+    inline fun <reified Pin> fetchList(crossinline call: (PinService) -> Call<MutableList<Pin>>): LiveData<MutableList<Pin>>{
+        val result = MutableLiveData<MutableList<Pin>>()
 
         CoroutineScope(Dispatchers.IO).launch {
             val request = call(pinService)
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Default){
                 try {
-                    request.enqueue(object :Callback<PinList>{
+                    request.enqueue(object :Callback<MutableList<Pin>>{
 
-                        override fun onFailure(call: Call<PinList>, th: Throwable) {
+                        override fun onFailure(call: Call<MutableList<Pin>>, th: Throwable) {
                             Log.d("PinRepository", "onFailure message: ${th.message}")
                         }
 
-                        override fun onResponse(call: Call<PinList>, response: Response<PinList>) {
+                        override fun onResponse(call: Call<MutableList<Pin>>, response: Response<MutableList<Pin>>) {
                             if (!response.isSuccessful){
                                 Log.d("PinRepository", "onResponse failure: ${response.code()}")
                             }

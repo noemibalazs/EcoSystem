@@ -12,6 +12,8 @@ data class Pin(
 
     @PrimaryKey
     @field:SerializedName("id") val id: String,
+    @field:SerializedName("width") val width: Int,
+    @field:SerializedName("height") val height:Int,
     @TypeConverters(UserConverter::class)
     @field:SerializedName("user") var user: User,
     @TypeConverters(UrlsConverter::class)

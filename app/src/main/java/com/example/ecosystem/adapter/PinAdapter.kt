@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecosystem.R
 import com.example.ecosystem.data.entity.Pin
+import com.example.imagelibrary.GlideApp
 import com.example.imagelibrary.GlideModule
 
 

@@ -7,7 +7,7 @@ import com.example.ecosystem.data.converter.UrlsConverter
 import com.example.ecosystem.data.converter.UserConverter
 import com.example.ecosystem.data.entity.Pin
 
-@Database(entities = [Pin::class], version = 3, exportSchema = false)
+@Database(entities = [Pin::class], version = 4, exportSchema = false)
 @TypeConverters(UrlsConverter::class, UserConverter::class)
 abstract class PinDataBase: RoomDatabase() {
     abstract fun getPinDao():PinDAO
