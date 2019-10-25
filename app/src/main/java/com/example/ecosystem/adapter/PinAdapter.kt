@@ -13,6 +13,7 @@ import com.example.ecosystem.R
 import com.example.ecosystem.data.entity.Pin
 import com.example.ecosystem.helper.MySharedPrefHelper
 import com.example.ecosystem.room.PinDAO
+import com.example.ecosystem.room.PinDataBase
 import com.example.ecosystem.ui.PinActivity
 import com.example.ecosystem.utils.openNewActivity
 import com.example.ecosystem.utils.setOnDebounceClickListener
@@ -54,15 +55,11 @@ class PinAdapter(val pinList: MutableList<Pin>, val context: Context) : Recycler
 
     private fun addEntity2DB(pin:Pin){
         doAsync {
-            PinDAO.getPinDao(context).addPin2DB(pin)
+            PinDataBase.getDataBase(context).getPinDao().addPin2DB(pin)
         }
     }
 
     private fun snackToast(view: View){
-        val snack = Snackbar.make(view, context.getString(R.string.favorite), Snackbar.LENGTH_LONG)
-        val snackView = view.rootView
-        val text = snackView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
-        text.setTextColor(ContextCompat.getColor(context, R.color.colorAccent))
-        snack.show()
+        Snackbar.make(view, context.getString(R.string.favorite), Snackbar.LENGTH_LONG).show()
     }
 }

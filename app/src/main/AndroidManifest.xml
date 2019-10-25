@@ -14,12 +14,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".ui.FavoriteActivity"
-            android:label="@string/fav_details"
-            android:parentActivityName=".ui.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.MainActivity" />
-        </activity>
+            android:label="@string/fav_details"/>
 
         <activity android:name=".ui.PinActivity"
             android:label="@string/pin_detail"

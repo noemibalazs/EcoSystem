@@ -14,13 +14,13 @@ import com.example.ecosystem.adapter.EndlessRecyclerOnScrollListener
 import com.example.ecosystem.adapter.PinAdapter
 import com.example.ecosystem.network.PinService
 import com.example.ecosystem.repository.PinRepository
-import com.example.ecosystem.viewmodel.PinViewModel
+import com.example.ecosystem.viewmodel.PinsViewModel
 import kotlinx.android.synthetic.main.fragment_container.*
 
 
 class PinsFragment : Fragment() {
 
-    private lateinit var pinViewModel:PinViewModel
+    private lateinit var pinViewModel:PinsViewModel
     private lateinit var adapter: PinAdapter
     private lateinit var pinRepository: PinRepository
 
@@ -32,7 +32,7 @@ class PinsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         pinRepository = PinRepository(PinService.getPinService())
-        pinViewModel = PinViewModel(pinRepository)
+        pinViewModel = PinsViewModel(pinRepository)
 
         initRV()
         getPinList()

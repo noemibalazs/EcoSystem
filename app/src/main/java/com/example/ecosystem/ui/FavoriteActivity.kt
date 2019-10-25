@@ -6,16 +6,19 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.ecosystem.R
 import com.example.ecosystem.data.entity.Pin
 import com.example.ecosystem.helper.MySharedPrefHelper
 import com.example.ecosystem.room.PinDAO
+import com.example.ecosystem.room.PinDataBase
 import kotlinx.android.synthetic.main.activity_favorite.*
 import org.jetbrains.anko.doAsync
 
 class FavoriteActivity : AppCompatActivity() {
 
-    private lateinit var entity:Pin
+    private lateinit var entity: Pin
+    private lateinit var db: PinDataBase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +27,9 @@ class FavoriteActivity : AppCompatActivity() {
         val pref = MySharedPrefHelper(this)
         val id = pref.getPinId()
 
-        val observer = object: Observer<Pin> {
+        db = PinDataBase.getDataBase(this)
+
+        val observer = object : Observer<Pin> {
             override fun onChanged(pin: Pin?) {
                 pin?.let {
                     populateUI(it)
@@ -34,10 +39,10 @@ class FavoriteActivity : AppCompatActivity() {
 
         }
 
-        PinDAO.getPinDao(this).getPin(id).observe(this, observer)
+        db.getPinDao().getPin(id).observe(this, observer)
     }
 
-    private fun populateUI(pin:Pin){
+    private fun populateUI(pin: Pin) {
         Glide.with(this)
             .load(pin.urls.regular)
             .placeholder(R.drawable.cover)
@@ -51,14 +56,16 @@ class FavoriteActivity : AppCompatActivity() {
             .load(profile)
             .placeholder(R.drawable.circle)
             .error(R.drawable.circle)
+            .apply(RequestOptions.circleCropTransform())
             .into(favOwnerAvatar)
 
     }
 
-    private fun deletePinFromDB(pin:Pin){
+    private fun deletePinFromDB(pin: Pin) {
         doAsync {
-            PinDAO.getPinDao(applicationContext).deletePin(pin)
+            db.getPinDao().deletePin(pin)
         }
+        finish()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -66,11 +73,10 @@ class FavoriteActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        val id = item?.itemId
-        if (id!=null && id == R.menu.delete_menu){
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == R.id.delete) {
             deletePinFromDB(entity)
-            finish()
             return true
         }
         return super.onOptionsItemSelected(item)
