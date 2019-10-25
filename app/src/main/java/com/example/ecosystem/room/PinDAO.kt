@@ -1,8 +1,10 @@
 package com.example.ecosystem.room
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.ecosystem.data.entity.Pin
+import com.example.ecosystem.utils.PIN_DB
 
 @Dao
 interface PinDAO {
@@ -18,4 +20,11 @@ interface PinDAO {
 
     @Delete
     fun deletePin(pin: Pin)
+
+
+    companion object{
+        fun getPinDao(context: Context): PinDAO{
+            return Room.databaseBuilder(context, PinDataBase::class.java, PIN_DB).build().getPinDao()
+        }
+    }
 }

@@ -4,4 +4,7 @@
     <string name="favorite">Favorite</string>
     <string name="toast_message">Something went wrong, try it later!</string>
     <string name="loading_txt">Loading</string>
+    <string name="saved">Saved by %s</string>
+    <string name="pin_detail">Pin Details</string>
+    <string name="fav_details">Favorite Details</string>
 </resources>
