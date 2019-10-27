@@ -13,6 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testOptions.unitTests.includeAndroidResources = true
     }
     buildTypes {
         release {
@@ -61,6 +62,9 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
 
     implementation project(':imagelibrary')
+
+    testImplementation "org.robolectric:robolectric:4.3.1"
+    testImplementation 'org.mockito:mockito-core:2.7.22'
 
     testImplementation 'junit:junit:4.12'
 
